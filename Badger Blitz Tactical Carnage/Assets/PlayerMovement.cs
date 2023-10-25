@@ -5,10 +5,12 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 10f;
+    public float horisSpeed = 2f;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
+
     }
 
     // Update is called once per frame
@@ -26,5 +28,7 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKey(KeyCode.A)){
             transform.position = transform.position + new Vector3(0 , 0, -speed * Time.deltaTime);
         }
+        float change = Input.GetAxis("Mouse X");
+        transform.Rotate(0,change,0);
     }
 }

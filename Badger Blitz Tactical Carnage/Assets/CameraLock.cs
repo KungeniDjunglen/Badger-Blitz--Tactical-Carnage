@@ -6,6 +6,11 @@ using UnityEngine;
 public class CameraLock : MonoBehaviour
 {
     private new Camera camera;
+    public Transform target;
+    private Vector3 offset = new Vector3(0, 5, -15);
+    private float smoothTime = 0.25f;
+    private Vector3 currentVelocity;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,12 +19,14 @@ public class CameraLock : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void LateUpdate() 
     {
-
-        var lookAtPos = Input.mousePosition;
-        lookAtPos.z = transform.position.z - camera.transform.position.z;
-        lookAtPos = camera.ScreenToWorldPoint(lookAtPos);
-        transform.up = lookAtPos - transform.position;
+        transform.position = Vector3.SmoothDamp(
+            transform.position,
+            target.position + offset,
+            ref currentVelocity,
+            smoothTime
+        );
+        
     }
 }
