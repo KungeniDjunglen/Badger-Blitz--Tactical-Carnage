@@ -4,29 +4,30 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 10f;
+    public float speed = 20f;
     public float horisSpeed = 2f;
+    private Rigidbody player;
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-
+        player = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
         if(Input.GetKey(KeyCode.W)){
-            transform.position = transform.position + new Vector3(-speed * Time.deltaTime, 0, 0);
+            player.velocity = transform.forward * speed;
         }
         if(Input.GetKey(KeyCode.S)){
-            transform.position = transform.position + new Vector3(speed * Time.deltaTime, 0, 0);
+            player.velocity = transform.forward * -speed;
         }
         if(Input.GetKey(KeyCode.D)){
-            transform.position = transform.position + new Vector3(0 , 0, speed * Time.deltaTime);
+            player.velocity = transform.right * speed;
         }
         if(Input.GetKey(KeyCode.A)){
-            transform.position = transform.position + new Vector3(0 , 0, -speed * Time.deltaTime);
+            player.velocity = transform.right * -speed;
         }
         float change = Input.GetAxis("Mouse X");
         transform.Rotate(0,change,0);

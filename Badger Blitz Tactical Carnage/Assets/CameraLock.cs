@@ -21,12 +21,8 @@ public class CameraLock : MonoBehaviour
     // Update is called once per frame
     private void LateUpdate() 
     {
-        transform.position = Vector3.SmoothDamp(
-            transform.position,
-            target.position + offset,
-            ref currentVelocity,
-            smoothTime
-        );
+        float change = Input.GetAxis("Mouse Y");
+        transform.Rotate(-change,0,0);
         
     }
 }
