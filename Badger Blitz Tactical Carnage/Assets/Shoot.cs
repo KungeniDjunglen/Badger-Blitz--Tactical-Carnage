@@ -6,7 +6,7 @@ using UnityEngine;
 public class Shoot : MonoBehaviour
 {
     public int damage = 5;
-    public float fireRate = 0.2f;
+    public float fireRate = 0.1f;
     private float nextFire;
     private new Camera camera;
     private LineRenderer laserline;
