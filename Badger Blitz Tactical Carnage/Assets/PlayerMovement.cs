@@ -30,8 +30,8 @@ public class PlayerMovement : MonoBehaviour
             player.velocity = transform.right * -speed;
         }
 
-        if(Input.GetKey(KeyCode.Space)){
-            player.velocity = transform.up * JumpHeight;
+        if(Input.GetKey(KeyCode.Space) && player.velocity.y == 0){
+            player.AddForce(Vector3.up * JumpHeight, ForceMode.Impulse);
         }
 
         float change = Input.GetAxis("Mouse X");
