@@ -6,6 +6,7 @@ public class EnemyUnit : MonoBehaviour
 {
     public float speed = 10f;
     public Transform Target;
+    public float MaxDistance = 0;
     public float minDistance = 2.5f;
 
     public float Damage = 5f;
@@ -40,7 +41,7 @@ public class EnemyUnit : MonoBehaviour
         }
     }
     private bool IsNearPlayer(){
-        if((Target.transform.position-this.transform.position).sqrMagnitude<10*10){
+        if((Target.transform.position-this.transform.position).sqrMagnitude<MaxDistance*MaxDistance){
             return true;
         }
         else{

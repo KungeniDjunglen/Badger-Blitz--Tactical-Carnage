@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 20f;
+    public float speed = 10f;
     public float JumpHeight = 10f;
     private Rigidbody player;
     // Start is called before the first frame update
@@ -18,16 +18,16 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if(Input.GetKey(KeyCode.W)){
-            player.velocity = transform.forward * speed;
+            player.velocity += transform.forward * speed * Time.deltaTime;
         }
         if(Input.GetKey(KeyCode.S)){
-            player.velocity = transform.forward * -speed;
+            player.velocity += transform.forward * -speed * Time.deltaTime;
         }
         if(Input.GetKey(KeyCode.D)){
-            player.velocity = transform.right * speed;
+            player.velocity += transform.right * speed * Time.deltaTime;
         }
         if(Input.GetKey(KeyCode.A)){
-            player.velocity = transform.right * -speed;
+            player.velocity += transform.right * -speed * Time.deltaTime;
         }
 
         if(Input.GetKey(KeyCode.Space) && player.velocity.y == 0){
