@@ -22,5 +22,6 @@ public class PlayerHealth : MonoBehaviour
         //Do the losing 
         Debug.Log("Du dog");
         text.text = "Du dog";
+        Destroy(gameObject);
     }
 }
