@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -15,7 +16,8 @@ public class PlayerHealth : MonoBehaviour
         text.text = "";
         playerMovement = GetComponent<PlayerMovement>();
         button = FindObjectOfType<Button>();
-        button.enabled = !button.enabled;
+        button.gameObject.SetActive(false);
+        button.onClick.AddListener(ButtonPresser);
     }
 
     public void TakeDamage(float Damage){
@@ -30,6 +32,10 @@ public class PlayerHealth : MonoBehaviour
         text.text = "Du dog";
         playerMovement.enabled = !playerMovement.enabled;
         Cursor.lockState = CursorLockMode.None;
+        button.gameObject.SetActive(true);
 
+    }
+    private void ButtonPresser(){
+        SceneManager.LoadScene("MainMenus");
     }
 }
